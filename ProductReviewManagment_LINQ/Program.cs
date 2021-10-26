@@ -38,7 +38,7 @@ namespace ProductReviewManagement_LINQ
                 new ProductReview(){ProductId=7,UserId=1,Review="bad",Rating=10,IsLike=false},
                 new ProductReview(){ProductId=6,UserId=5,Review="good",Rating=17,IsLike=true},
             };
-            CountingID(list);
+            ProductIdandReview(list);
             Console.ReadLine();
         }
 
@@ -85,6 +85,18 @@ namespace ProductReviewManagement_LINQ
             {
                 Console.WriteLine("Product ID: " + element.ProductId + "\t Count: " + element.count);
                 Console.WriteLine("========================================================");
+            }
+        }
+
+        //UC5
+        //Retrive only ProductID and Review from the Records
+        public static void ProductIdandReview(List<ProductReview> list)
+        {
+            var p = list.Select(product => new { ProductId = product.ProductId, review = product.Review }).ToList();
+            foreach (var element in p)
+            {
+                Console.WriteLine("Product ID: " + element.ProductId + "\t Review: " + element.review);
+                Console.WriteLine("=====================================");
             }
         }
     }
